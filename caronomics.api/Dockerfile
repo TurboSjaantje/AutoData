@@ -1,8 +1,7 @@
 ﻿# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["caronomics.api/caronomics.api.csproj", "caronomics.api/"]
-RUN dotnet restore "caronomics.api/caronomics.api.csproj"
+RUN dotnet restore "caronomics.api.csproj"
 COPY . .
 WORKDIR "/src/caronomics.api"
 RUN dotnet publish "caronomics.api.csproj" -c Release -o /app/publish

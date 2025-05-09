@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flowbite Blazor WASM Starter</title>
+    <base href="/" />
+
+    <link rel="icon" type="image/png" href="img/Vehicle_information.png" />
+
+    <!-- This is the stylesheet generated from app.scss. -->
+    <link rel="stylesheet" href="css/app.css">
+
+    <!--
+        The following stylesheet will be generated from scoped CSS files such as Home.razor.css.
+        However, using Tailwind CSS, it makes sense to avoid scoped CSS files, which is why this
+        is commented out. At the same time, as long as no scoped CSS files exist, this file will
+        not be generated and an error message is printed on the console. Another reason for not
+        having the link.
+     -->
+    <!-- <link href="FlowbiteBlazorWasmStarter.styles.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <!-- <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div> -->
+
+    <script src="lib/flowbite/flowbite.min.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/sidebar.js"></script>
+
+    <script>
+        // Make the initFlowbite function accessible via JS interop.
+        window.initFlowbite = initFlowbite;
+    </script>
+</body>
+
+</html>

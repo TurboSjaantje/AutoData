@@ -16,6 +16,15 @@
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="caronomics.api\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="caronomics.api\appsettings.json" />
+    <_ContentIncludedByDefault Remove="caronomics.api\obj\caronomics.api.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="caronomics.api\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="caronomics.api\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="caronomics.api\Properties\launchSettings.json" />
+  </ItemGroup>
+
   <Target Name="Tailwind" BeforeTargets="Compile">
     <Exec Command="npm run build" />
   </Target>

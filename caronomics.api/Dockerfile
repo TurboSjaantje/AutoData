@@ -1,10 +1,15 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build 
-WORKDIR /app 
-COPY . ./ 
-RUN dotnet restore  \
-RUN dotnet publish -c Release -o out
+﻿# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["caronomics.api/caronomics.api.csproj", "caronomics.api/"]
+RUN dotnet restore "caronomics.api/caronomics.api.csproj"
+COPY . .
+WORKDIR "/src/caronomics.api"
+RUN dotnet publish "caronomics.api.csproj" -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 
-WORKDIR /app 
-COPY --from=build /app/out . 
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/publish .
+EXPOSE 80
 ENTRYPOINT ["dotnet", "caronomics.api.dll"]

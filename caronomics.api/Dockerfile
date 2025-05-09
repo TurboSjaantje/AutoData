@@ -1,8 +1,16 @@
 ﻿# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-RUN dotnet restore "caronomics.api.csproj"
+
+# Copy the .csproj file first (for better layer caching too)
+COPY ["caronomics.api.csproj", "caronomics.api/"]
+
+# Now you can safely restore
+RUN dotnet restore "caronomics.api/caronomics.api.csproj"
+
+# Copy everything else
 COPY . .
+
 WORKDIR "/src/caronomics.api"
 RUN dotnet publish "caronomics.api.csproj" -c Release -o /app/publish
 

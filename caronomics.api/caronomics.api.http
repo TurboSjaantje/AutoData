@@ -1,6 +1,0 @@
-@caronomics.api_HostAddress = http://localhost:5155
-
-GET {{caronomics.api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

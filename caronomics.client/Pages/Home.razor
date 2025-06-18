@@ -1,15 +1,33 @@
 ﻿@page "/"
+@using caronomics.services
+@using LeafletForBlazor
 
 <PageTitle>Home</PageTitle>
 
-<h1 class="text-4xl font-bold">Thirza waarom kijk je naar mn app!</h1>
-
-<div class="text-xl">Welcome to your new app.</div>
-<div class="mt-5">This is a starter template for Blazor WebAssembly that uses
-    <a href="https://tailwindcss.com/" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Tailwind
-        CSS</a> and <a href="https://flowbite.com/"
-                       class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Flowbite</a> UI
-    library for
-    styling.
+<div class="text-xl">Find a petrol station</div>
+<div class="mt-5">
+    
 </div>
 
+
+
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <RealTimeMap Parameters="parameters" height="460px" width="620px"></RealTimeMap>
+</div>
+
+@* <p>@result</p> *@
+
+
+@code{
+    RealTimeMap.LoadParameters parameters = new RealTimeMap.LoadParameters()  //general map settings
+    {
+        location = new RealTimeMap.Location()
+        {
+            latitude = 51.87146900163339,      
+            longitude = 4.786296998803098,
+        },
+        zoomLevel = 18
+    };
+    
+    string result = TankjeScraperService.GetFuelData("Bleskensgraaf");
+}

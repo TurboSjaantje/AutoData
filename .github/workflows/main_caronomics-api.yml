@@ -31,16 +31,16 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Build with dotnet
-        run: dotnet build ${{env.DOTNET_ROOT}}/caronomics.api --configuration Release
+        run: dotnet build ./caronomics.api --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/out/caronomics.api
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/caronomics.api
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .caronomics-api
-          path: ${{env.DOTNET_ROOT}}/out/caronomics.api
+          path: ${{env.DOTNET_ROOT}}/caronomics.api
 
 
   deploy:
